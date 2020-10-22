@@ -1,23 +1,42 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Admin;
+
+use App\Controllers\BaseController;
+use App\Models\Kategori_M;
+
 
 class Menu extends BaseController
 {
 	public function index()
 	{
-		return view('welcome_message');
+		return view('menu/form');
 	}
 
-	public function select()
+	public function insert()
 	{
-		echo "<h1>Untuk menampilkan data</h1>";
+		$file = $this->request->getFile('gambar');
+
+		$name = $file->getName();
+
+		$file->move('./upload');
+		echo $name . " sudah di upload Berhasil:)";
 	}
 
-	public function update($id = null, $nama = null)
+
+	public function option()
 	{
-		echo "<h1>Untuk update data dengan id : $id    $nama</h1>";
+		$model = new Kategori_M();
+		$kategori = $model->findAll();
+
+		$data = [
+			'kategori' => $kategori
+		];
+
+		return view('template/option', $data);
 	}
+
+
 
 	//--------------------------------------------------------------------
 

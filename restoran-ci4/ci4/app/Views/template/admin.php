@@ -4,28 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Layout</title>
+    <link rel="stylesheet" href="<?= base_url('/bootstrap/css/bootstrap.min.css') ?>">
+    <title>Admin Page</title>
 </head>
 
 <body>
-    <nav>
 
-        <ul>
-            <a href="<?= base_url() ?>/admin/kategori">
-                <li>Select</li>
-            </a>
-            <a href="<?= base_url() ?>/admin/kategori/create">
-                <li>Insert</li>
-            </a>
-            <a href="<?= base_url() ?> /admin/kategori/find/6">
-                <li>Update</li>
-            </a>
-        </ul>
+    <div class="container">
+        <div class="row mt-2">
+            <div class="col">
+                <nav class="navbar navbar-light bg-light">
+                    <a href="<?= base_url('/admin') ?>" class="navbar-brand">Admin Page</a>
+                </nav>
+            </div>
+        </div>
 
+        <div class="row mt-2">
+            <div class="col-4">
+                <div class="card" style="width: 18rem;">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><a href="<?= base_url('/admin/kategori') ?>">Kategori</a></li>
+                        <li class="list-group-item"><a href="<?= base_url('/admin/menu') ?>">Menu</a></li>
+                        <li class="list-group-item"><a href="<?= base_url('/admin/pelanggan') ?>">Pelanggan</a></li>
+                        <li class="list-group-item"><a href="<?= base_url('/admin/order') ?>">Order</a></li>
+                        <li class="list-group-item"><a href="<?= base_url('/admin/orderdetail') ?>">Order Detail</a></li>
+                        <li class="list-group-item"><a href="<?= base_url('/admin/User') ?>">User</a></li>
+                    </ul>
+                </div>
+            </div>
 
-    </nav>
+            <div class="col-8 px-2">
+                <?= $this->renderSection('content') ?>
+            </div>
+        </div>
+    </div>
 
-    <?= $this->renderSection('content') ?>
 </body>
 
 </html>

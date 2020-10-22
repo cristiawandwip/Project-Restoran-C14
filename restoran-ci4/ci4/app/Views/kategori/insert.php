@@ -2,6 +2,14 @@
 
 <?= $this->section('content') ?>
 
+
+<?php
+
+echo session()->getFlashdata('info');
+
+?>
+
+
 <h1>INSERT DATA</h1>
 
 <form action="<?= base_url() ?>/admin/kategori/insert" method="POST">
