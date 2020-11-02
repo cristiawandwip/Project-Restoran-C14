@@ -2,6 +2,16 @@
 
 <?= $this->section('content') ?>
 
+<?php
+if (isset($_GET['page_page'])) {
+    $page = $_GET['page_page'];
+    $jumlah = 3;
+    $no = ($jumlah * $page) - $jumlah + 1;
+} else {
+    $no = 1;
+}
+?>
+
 <div class="row">
 
     <div class="col-4">
@@ -20,35 +30,42 @@
 
 <div class="row mt-2">
 
-    <table class="table">
-
-        <tr>
-            <th>No</th>
-            <th>Kategori</th>
-            <th>Keterangan</th>
-            <th>Hapus</th>
-            <th>Ubah</th>
-
-        </tr>
-
-        <?php $no = 1; ?>
-        <?php foreach ($kategori as $key => $value) : ?>
+    <div class="col">
+        <table class="table">
 
             <tr>
-                <td><?= $no++ ?></td>
-                <td><?= $value['kategori'] ?></td>
-                <td><?= $value['keterangan'] ?></td>
-                <td><a href="<?= base_url() ?>/admin/kategori/delete/<?= $value['idkategori'] ?>">Hapus</a></td>
-                <td><a href="<?= base_url() ?>/admin/kategori/find/<?= $value['idkategori'] ?>">Ubah</a></td>
+                <th>No</th>
+                <th>Kategori</th>
+                <th>Keterangan</th>
+                <th>Aksi</th>
+
 
             </tr>
 
-        <?php endforeach; ?>
+            <?php $no; ?>
+            <?php foreach ($kategori as $key => $value) : ?>
+
+                <tr>
+                    <td><?= $no++ ?></td>
+                    <td><?= $value['kategori'] ?></td>
+                    <td><?= $value['keterangan'] ?></td>
+                    <td>
+                        <a href="<?= base_url() ?>/admin/kategori/delete/<?= $value['idkategori'] ?>">
+                            <img src="<?= base_url('/icon/can.svg'); ?>" alt=""></a>
+                        <a href="<?= base_url() ?>/admin/kategori/find/<?= $value['idkategori'] ?>">
+                            <img src="<?= base_url('/icon/pen.svg'); ?>" alt=""></a>
+                    </td>
+                </tr>
+
+            <?php endforeach; ?>
 
 
-    </table>
+        </table>
 
-    <?= $pager->links('group1', 'bootstrap') ?>
+
+        <?= $pager->links('page', 'bootstrap') ?>
+
+    </div>
 
 </div>
 
