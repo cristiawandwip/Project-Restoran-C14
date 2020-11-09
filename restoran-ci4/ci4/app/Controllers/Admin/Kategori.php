@@ -86,8 +86,4 @@ class Kategori extends BaseController
 
 		return redirect()->to(base_url("/admin/kategori"));
 	}
-
-
-	//--------------------------------------------------------------------
-
 }
